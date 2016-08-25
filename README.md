@@ -33,8 +33,7 @@ use Rack::Session::Cookie, :key => 'rack.session',
 Note
 ----
 
-> In order for `Rack::SSL` to properly work it has to be at the top of the Rack Middleware.
-Using `enable :session` will place `Rack::Session::Cookie` before `Rack::SSL` and will prevent `Rack::SSL` from marking cookies as secure.
-To fix this issue do not use `enable :sessions` instead add the `Rack::Session::Cookie` middleware after `Rack::SSL`.
+In order for `Rack::SSL` to properly work it has to be at the top of the Rack Middleware.
+Using `enable :session` will place `Rack::Session::Cookie` before `Rack::SSL` and will prevent `Rack::SSL` from marking cookies as secure.Do not use `enable :sessions` instead add the `Rack::Session::Cookie` middleware after `Rack::SSL`.
 
-> Remenber to chance `:secret => 'some_secret'` for something more secure like creating and using enviroment variables. e.g.: `ENV['SINATRA_SESSION_SECRET']`
+Also remember to change `:secret => 'some_secret'` for something more secure for example creating and using enviroment variables. e.g.: `ENV['SINATRA_SESSION_SECRET']` also change the value `'some_secret'` for a strong password/key, otherwise you won't be secure.
